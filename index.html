@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Filme</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h1>Tickets.com</h1>
+            <ul>
+                <li>
+                    <img src="https://cdn-icons-png.flaticon.com/512/412/412836.png" alt="Ícone Filmes">
+                    <a href="#">Filmes</a>
+                </li>
+                <li>
+                    <img src="https://cdn-icons-png.flaticon.com/512/33/33308.png" alt="Ícone Funcionários">
+                    <a href="#">Funcionários</a>
+                </li>
+                <li>
+                    <img src="https://cdn.icon-icons.com/icons2/2518/PNG/512/adjustments_horizontal_icon_151643.png" alt="Ícone Painel de Controle">
+                    <a href="#">Painel de Controle</a>
+                </li>
+                <li>
+                    <img src="https://icons.veryicon.com/png/o/education-technology/library-icon/system-log-2.png" alt="Ícone Logs">
+                    <a href="#">Logs</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <header>
+                <input type="text" placeholder="Pesquisar um ingresso">
+
+                <div class="user-info">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1182/1182718.png" alt="Ícone Notificação">
+                    <img src="https://avatars.githubusercontent.com/u/134342470?v=4" alt="Perfil">
+                    <span>Bruno Henrique</span> | <span>Administrador</span>
+                </div>
+            </header>
+
+            <section>
+                <h2>Consultar Filme</h2>
+                <form id="form-consulta">
+                    <input type="text" id="nomeFilme" name="nomeFilme" placeholder="Digite o nome do filme">
+                    <button type="submit">Consultar</button>
+                </form>
+            </section>
+
+            <section>
+                <h3>Resultado</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Poster</th>
+                            <th>Nome</th>
+                            <th>Ano de Lançamento</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
