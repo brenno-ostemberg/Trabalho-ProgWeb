@@ -1,5 +1,7 @@
 CREATE DATABASE tickets_db;
 
+\c tickets_db
+
 CREATE TABLE filmes (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
