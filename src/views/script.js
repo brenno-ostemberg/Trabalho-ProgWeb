@@ -1,5 +1,6 @@
-document.getElementById("form-consulta").addEventListener("submit", function(event) {
-    event.preventDefault();
+// Função para consultar os filmes no banco de dados
+function consultarFilmes(event) {
+    event.preventDefault(); 
 
     const nomeFilme = document.getElementById("nomeFilme").value;
 
@@ -14,18 +15,14 @@ document.getElementById("form-consulta").addEventListener("submit", function(eve
         },
         body: JSON.stringify(dados)
     })
-
     .then(response => response.json())
     .then(data => {
-
         const tbody = document.querySelector("table tbody");
-        tbody.innerHTML = "";
-
+        tbody.innerHTML = ""; 
 
         if (data.filmes && data.filmes.length > 0) {
             data.filmes.forEach(filme => {
                 const row = document.createElement("tr");
-
 
                 const cellPoster = document.createElement("td");
                 const imgPoster = document.createElement("img");
@@ -34,7 +31,6 @@ document.getElementById("form-consulta").addEventListener("submit", function(eve
                 imgPoster.style.width = "50px";
                 cellPoster.appendChild(imgPoster);
                 row.appendChild(cellPoster);
-
 
                 const cellNome = document.createElement("td");
                 cellNome.textContent = filme.nome;
@@ -59,7 +55,6 @@ document.getElementById("form-consulta").addEventListener("submit", function(eve
                 tbody.appendChild(row);
             });
         } else {
-
             const row = document.createElement("tr");
             const cell = document.createElement("td");
             cell.colSpan = 5;
@@ -71,5 +66,6 @@ document.getElementById("form-consulta").addEventListener("submit", function(eve
     .catch(error => {
         console.error("Erro ao consultar o filme:", error);
     });
-});
+}
 
+document.getElementById("form-consulta").addEventListener("submit", consultarFilmes);
