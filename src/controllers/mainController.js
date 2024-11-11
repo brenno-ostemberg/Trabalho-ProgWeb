@@ -27,7 +27,7 @@ router.post('/api/movies/search', async (req, res) => {
 // Rota para buscar filmes com método GET
 router.get('/api/movies/search', async (req, res) => {
     try {
-        const { nomeFilme } = req.body;
+        const { nomeFilme } = req.query;
 
         const query = `
             SELECT 
