@@ -28,7 +28,8 @@ const searchMoviesByName = async (nomeFilme) => {
     return result.rows;
 };
 
-// Exporta a função query
+// Exporta as funções necessárias
 module.exports = {
-    query: (text, params) => pool.query(text, params)
+    query: (text, params) => pool.query(text, params),
+    searchMoviesByName
 };
