@@ -7,13 +7,14 @@ document.getElementById("form-consulta").addEventListener("submit", function(eve
         nomeFilme: nomeFilme
     };
 
-    fetch("URL_DO_BACKEND", {
+    fetch("http://localhost:3000/api/movies/search", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(dados)
     })
+
     .then(response => response.json())
     .then(data => {
 
