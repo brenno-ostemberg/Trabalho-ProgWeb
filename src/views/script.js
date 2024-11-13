@@ -68,4 +68,7 @@ function consultarFilmes(event) {
     });
 }
 
-document.getElementById("form-consulta").addEventListener("submit", consultarFilmes);
+// Adiciona o evento de submit no formulário
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("form-consulta").addEventListener("submit", consultarFilmes);
+});
