@@ -18,6 +18,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
+// Servindo o arquivo editMovie.html
+app.get('/editMovie.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'editMovie.html'));
+});
+
 // Configuração de Rotas
 app.use('/', mainController);
 
