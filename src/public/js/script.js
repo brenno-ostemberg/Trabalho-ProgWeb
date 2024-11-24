@@ -98,7 +98,7 @@ function removerFilme(id) {
 }
 
 // Função para adicionar um filme
-function adicionarFilme(event) {
+function handleAdicionarFilme(event) {
     event.preventDefault();
 
     const nome = document.getElementById("nome").value;
@@ -106,27 +106,18 @@ function adicionarFilme(event) {
     const poster = document.getElementById("poster").value;
     const status = document.getElementById("status").value;
 
-    const dados = {
-        nome: nome,
-        anoLancamento: anoLancamento,
-        poster: poster,
-        status: status
-    };
-
     fetch("http://localhost:3000/api/movies", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(dados)
+        body: JSON.stringify({ nome, anoLancamento, poster, status })
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
             alert("Filme adicionado com sucesso!");
-            document.getElementById("form-adicionar-filme").reset();
-            document.getElementById("adicionar-filme").style.display = "none";
-            consultarFilmes(new Event("submit"));
+            window.location.href = "/"; // Redireciona para a página inicial
         } else {
             alert("Erro ao adicionar filme: " + data.message);
         }
@@ -136,12 +127,16 @@ function adicionarFilme(event) {
     });
 }
 
-// Adiciona o evento de submit no formulário de consulta
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("form-consulta").addEventListener("submit", consultarFilmes);
-    document.getElementById("btn-adicionar-filme").addEventListener("click", function() {
-        const section = document.getElementById("adicionar-filme");
-        section.style.display = section.style.display === "none" ? "block" : "none";
-    });
-    document.getElementById("form-adicionar-filme").addEventListener("submit", adicionarFilme);
+// Adicionar evento no formulário de adicionar filme
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const formConsulta = document.getElementById("form-consulta");
+    if (formConsulta) {
+        formConsulta.addEventListener("submit", consultarFilmes);
+    }
+
+    const formAdicionarFilme = document.getElementById("form-adicionar-filme");
+    if (formAdicionarFilme) {
+        formAdicionarFilme.addEventListener("submit", handleAdicionarFilme);
+    }
 });
