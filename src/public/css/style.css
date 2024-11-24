@@ -164,14 +164,51 @@ button.editar, button.remover {
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    margin-right: 10px; /* Adiciona espaço entre os botões */
+    margin-right: 10px; 
 }
 
 button.remover {
-    background-color: #f44336; /* Cor do botão Remover */
+    background-color: #f44336; 
     color: white;
 }
 
 button.remover:hover {
-    background-color: #d32f2f; /* Cor do botão Remover ao passar o mouse */
+    background-color: #d32f2f; 
+}
+
+#btn-adicionar-filme {
+    padding: 10px 20px;
+    background-color: #3e3b6c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+#btn-adicionar-filme:hover {
+    background-color: #5c5a91;
+}
+
+#form-adicionar-filme {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#form-adicionar-filme input, #form-adicionar-filme select, #form-adicionar-filme button {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#form-adicionar-filme button {
+    background-color: #3e3b6c;
+    color: white;
+    cursor: pointer;
+}
+
+#form-adicionar-filme button:hover {
+    background-color: #5c5a91;
 }
