@@ -92,4 +92,34 @@ router.post('/api/movies', async (req, res) => {
     }
 });
 
+// Rota para editar um filme
+router.put('/api/movies/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nome, anoLancamento, poster, status } = req.body;
+
+        const query = `
+            UPDATE filmes 
+            SET nome = $1, ano_lancamento = $2, poster = $3, status = $4 
+            WHERE id = $5
+        `;
+        const result = await db.query(query, [
+            nome,
+            anoLancamento,
+            poster,
+            status === "Ativo", 
+            id
+        ]);
+
+        if (result.rowCount > 0) {
+            res.json({ success: true, message: 'Filme atualizado com sucesso!' });
+        } else {
+            res.status(404).json({ success: false, message: 'Filme não encontrado.' });
+        }
+    } catch (error) {
+        console.error('Erro ao editar filme:', error);
+        res.status(500).json({ success: false, message: 'Erro interno do servidor.' });
+    }
+});
+
 module.exports = router;
