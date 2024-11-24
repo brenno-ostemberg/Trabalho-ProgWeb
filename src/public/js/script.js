@@ -52,9 +52,9 @@ function consultarFilmes(event) {
                 btnEditar.classList.add("editar");
                 cellAcoes.appendChild(btnEditar);
 
-                const btnRemovar = document.createElement("button");
-                btnRemovar.textContent = "Remover";
-                btnRemovar.classList.add("remover");
+                const btnRemover = document.createElement("button");
+                btnRemover.textContent = "Remover";
+                btnRemover.classList.add("remover");
                 btnRemover.addEventListener("click", () => removerFilme(filme.id)); 
                 cellAcoes.appendChild(btnRemover);
 
