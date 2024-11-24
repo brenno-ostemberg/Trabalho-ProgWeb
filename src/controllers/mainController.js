@@ -39,4 +39,25 @@ router.get('/api/movies/search', async (req, res) => {
     }
 });
 
+// Rota para deletar um filme
+router.delete('/api/movies/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const query = 'DELETE FROM Filmes WHERE id = $1';
+        const result = await db.query(query, [id]);
+
+        if (result.rowCount > 0) {
+            res.json({ success: true, message: 'Filme removido com sucesso!' });
+        } else {
+            res.status(404).json({ success: false, message: 'Filme não encontrado.' });
+        }
+
+    } catch (error) {
+        console.error('Erro ao remover filme:', error);
+        res.status(500).json({ success: false, message: 'Erro interno do servidor.' });
+    }
+});
+        
+
 module.exports = router;
