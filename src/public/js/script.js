@@ -76,6 +76,27 @@ function consultarFilmes(event) {
     });
 }
 
+// Função para remover um filme
+function removerFilme(id) {
+    if (confirm("Tem certeza que deseja remover este filme?")) {
+        fetch(`http://localhost:3000/api/movies/${id}`, {
+            method: "DELETE",
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                consultarFilmes(new Event("submit")); 
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Erro ao remover o filme:", error);
+        });
+    }
+}
+
 // Adiciona o evento de submit no formulário
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("form-consulta").addEventListener("submit", consultarFilmes);
