@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Filme</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Adicionar Novo Filme</h1>
+
+        <form id="form-adicionar-filme">
+
+            <label for="nome">Nome do Filme:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="anoLancamento">Ano de Lançamento:</label>
+            <input type="number" id="anoLancamento" name="anoLancamento" required>
+
+            <label for="poster">URL do Poster:</label>
+            <input type="url" id="poster" name="poster" required>
+
+            <label for="status">Status:</label>
+
+            <select id="status" name="status" required>
+                <option value="Ativo">Ativo</option>
+                <option value="Inativo">Inativo</option>
+            </select>
+
+            <button type="submit">Salvar</button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
