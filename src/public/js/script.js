@@ -50,6 +50,7 @@ function consultarFilmes(event) {
                 const btnEditar = document.createElement("button");
                 btnEditar.textContent = "Editar";
                 btnEditar.classList.add("editar");
+                btnEditar.addEventListener("click", () => abrirPaginaEditar(filme));
                 cellAcoes.appendChild(btnEditar);
 
                 const btnRemover = document.createElement("button");
@@ -127,6 +128,41 @@ function handleAdicionarFilme(event) {
     });
 }
 
+function abrirPaginaEditar(filme) {
+    localStorage.setItem("filmeParaEditar", JSON.stringify(filme));
+    window.location.href = "/editMovie.html"; 
+}
+
+function handleEditarFilme(event) {
+    event.preventDefault();
+
+    const id = document.getElementById("id").value;
+    const nome = document.getElementById("nome").value;
+    const anoLancamento = document.getElementById("anoLancamento").value;
+    const poster = document.getElementById("poster").value;
+    const status = document.getElementById("status").value;
+
+    fetch(`http://localhost:3000/api/movies/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ nome, anoLancamento, poster, status })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert("Filme atualizado com sucesso!");
+            window.location.href = "/"; // Redireciona para a página inicial
+        } else {
+            alert("Erro ao editar filme: " + data.message);
+        }
+    })
+    .catch(error => {
+        console.error("Erro ao editar filme:", error);
+    });
+}
+
 // Adicionar evento no formulário de adicionar filme
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -139,4 +175,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (formAdicionarFilme) {
         formAdicionarFilme.addEventListener("submit", handleAdicionarFilme);
     }
+
+    const formEditarFilme = document.getElementById("form-editar-filme");
+    if (formEditarFilme) {
+        const filme = JSON.parse(localStorage.getItem("filmeParaEditar"));
+
+        if (filme) {
+            document.getElementById("id").value = filme.id;
+            document.getElementById("nome").value = filme.nome;
+            document.getElementById("anoLancamento").value = filme.anoLancamento;
+            document.getElementById("poster").value = filme.poster;
+            document.getElementById("status").value = filme.status;
+        }
+
+        formEditarFilme.addEventListener("submit", handleEditarFilme);
+    }
+
 });
