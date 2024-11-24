@@ -9,6 +9,10 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../views', 'index.html'));
 });
 
+router.get('/adicionar-filme', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views', 'addMovie.html'));
+});
+
 // Rota para buscar filmes com método POST
 router.post('/api/movies/search', async (req, res) => {
     try {
@@ -58,6 +62,34 @@ router.delete('/api/movies/:id', async (req, res) => {
         res.status(500).json({ success: false, message: 'Erro interno do servidor.' });
     }
 });
-        
+
+// Rota para criar um novo filme usando o método POST
+router.post('/api/movies', async (req, res) => {
+    try {
+        const { nome, anoLancamento, poster, status } = req.body;
+
+        const query = `
+            INSERT INTO filmes (nome, ano_lancamento, poster, status)
+            VALUES ($1, $2, $3, $4)
+            RETURNING *;
+        `;
+        const valores = [nome, anoLancamento, poster, status === 'Ativo'];
+
+        const result = await db.query(query, valores);
+
+        res.status(201).json({
+            success: true,
+            message: 'Filme adicionado com sucesso!',
+            filme: result.rows[0],
+        });
+
+    } catch (error) {
+        console.error('Erro ao adicionar filme:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Erro interno do servidor.',
+        });
+    }
+});
 
 module.exports = router;
