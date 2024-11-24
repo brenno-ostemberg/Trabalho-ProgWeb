@@ -46,10 +46,18 @@ function consultarFilmes(event) {
                 row.appendChild(cellStatus);
 
                 const cellAcoes = document.createElement("td");
+
                 const btnEditar = document.createElement("button");
                 btnEditar.textContent = "Editar";
                 btnEditar.classList.add("editar");
                 cellAcoes.appendChild(btnEditar);
+
+                const btnRemovar = document.createElement("button");
+                btnRemovar.textContent = "Remover";
+                btnRemovar.classList.add("remover");
+                btnRemover.addEventListener("click", () => removerFilme(filme.id)); 
+                cellAcoes.appendChild(btnRemover);
+
                 row.appendChild(cellAcoes);
 
                 tbody.appendChild(row);
