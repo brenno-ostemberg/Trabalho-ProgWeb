@@ -177,17 +177,22 @@ button.remover:hover {
 }
 
 #btn-adicionar-filme {
-    padding: 10px 20px;
-    background-color: #3e3b6c;
+    padding: 15px 30px;
+    background-color: #007bff; 
     color: white;
+    font-size: 1.1em;
+    font-weight: bold;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #btn-adicionar-filme:hover {
-    background-color: #5c5a91;
+    background-color: #0056b3;
+    transform: scale(1.05); 
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
 }
 
 #form-adicionar-filme {
