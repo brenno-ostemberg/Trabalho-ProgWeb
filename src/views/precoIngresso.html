@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets.com - Reserva de Ingressos</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Menu de navegação similar ao index.html -->
+        <nav>
+            <img src="https://cdn-icons-png.flaticon.com/512/412/412836.png" alt="Ícone Filmes">
+            <a href="moviesTodos">Filmes</a>
+            
+            <img src="https://cdn-icons-png.flaticon.com/512/33/33308.png" alt="Ícone Funcionários">
+            <a href="#">Funcionários</a>
+            
+            <img src="https://cdn.icon-icons.com/icons2/2518/PNG/512/adjustments_horizontal_icon_151643.png" alt="Ícone Painel de Controle">
+            <a href="#">Painel de Controle</a>
+            
+            <img src="https://icons.veryicon.com/png/o/education-technology/library-icon/system-log-2.png" alt="Ícone Logs">
+            <a href="#">Logs</a>
+        </nav>
+
+        <main role="main">
+            <div class="header-container">
+                <div class="page-title">
+                    <h1>Sobre o filme</h1>
+                </div>
+                <div class="reserve-section">
+                    <h1>Reserve seu ingresso</h1>
+                </div>
+                <div class="user-info">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1182/1182718.png" alt="Ícone Notificação">
+                    <img src="https://avatars.githubusercontent.com/u/134342470?v=4" alt="Perfil">
+                    <span>Bruno Henrique | Administrador</span>
+                </div>
+            </div>
+
+            <div class="content-container">
+                <div class="movie-info">
+                    <div class="movie-poster">
+                        <img src="" alt="Poster do filme" id="moviePoster">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="movie-details">
+                        <div class="rating">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                        <h2 id="movieTitle">Barbie - Filme 2023</h2>
+                        <div class="movie-meta">
+                            <span>141 min</span>
+                            <span>Comédia/Fantasia</span>
+                            <span>2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ticket-selection">
+                    <div class="selection-row">
+                        <select id="cidade" required>
+                            <option value="">Campo Grande</option>
+                            <!-- Outras cidades serão adicionadas dinamicamente -->
+                        </select>
+
+                        <select id="formato" required>
+                            <option value="">IMAX</option>
+                            <!-- Outros formatos serão adicionados dinamicamente -->
+                        </select>
+
+                        <input type="date" id="data" required value="2023-07-25">
+
+                        <select id="horario" required>
+                            <option value="">17:50 IMAX</option>
+                            <!-- Outros horários serão adicionados dinamicamente -->
+                        </select>
+                    </div>
+
+                    <div class="seating-chart">
+                        <div class="screen-text">TELA</div>
+                        <!-- Mapa de assentos será gerado dinamicamente via JavaScript -->
+                        <div id="seatingMap"></div>
+                    </div>
+
+                    <div class="checkout-section">
+                        <div class="customer-info">
+                            <span>Nome: <span id="customerName">Messi Ronaldo</span></span>
+                        </div>
+                        <div class="ticket-info">
+                            <span>3 Ingressos - F12, F13</span>
+                        </div>
+                        <div class="price-info">
+                            <span>Preço: R$ 78,23</span>
+                        </div>
+                        <button class="checkout-button">CHECKOUT</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>
