@@ -5,9 +5,9 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif; 
-    background-color: #f4f4f9; 
-    color: #333; 
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
 }
 
 .container {
@@ -17,12 +17,22 @@ body {
 
 nav {
     width: 250px;
-    background-color: #2b265e; 
+    background-color: #2b265e;
     color: white;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #ffc107;
 }
 
 nav h1 {
@@ -40,6 +50,13 @@ nav ul li {
     align-items: center;
     margin: 20px 0;
     cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 10px;
+    border-radius: 5px; 
+}
+
+nav ul li:hover {
+    background-color: rgba(255, 193, 7, 0.2); 
 }
 
 nav ul li img {
@@ -49,23 +66,18 @@ nav ul li img {
 }
 
 nav ul li a {
-    color: white;
-    text-decoration: none;
     font-size: 1em;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: #ffc107; 
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2b265e; 
+    background-color: #2b265e;
     color: white;
     padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; 
 }
 
 header input {
@@ -110,93 +122,70 @@ main {
     border-radius: 10px;
     margin: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-section h2, section h3 {
-    margin-bottom: 20px;
-    color: #2b265e;
-    font-weight: bold;
+    overflow: auto; 
 }
 
 .tabs {
     display: flex;
-    border-bottom: 2px solid #e5e5e5;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
 .tabs button {
-    background: none;
+    color: #2b265e;
+    background: #f4f4f9;
     border: none;
+    border-radius: 5px;
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: all 0.3s;
 }
 
 .tabs button.active {
-    color: #2b265e;
-    border-bottom: 3px solid #ffc107; 
+    color: white;
+    background-color: #2b265e;
+    border-bottom: 3px solid #ffc107;
     font-weight: bold;
 }
 
 .tabs button:hover {
-    color: #ffc107;
-}
-
-#form-consulta {
-    display: flex;
-    gap: 15px;
-}
-
-#form-consulta input {
-    padding: 10px;
-    width: 100%;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    font-size: 1em;
-}
-
-#form-consulta button {
-    padding: 10px 20px;
-    background-color: #2b265e;
     color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-#form-consulta button:hover {
     background-color: #ffc107;
-    color: #2b265e;
-    transform: scale(1.05);
 }
 
+#btn-filtrar, 
 #btn-adicionar-filme {
-    padding: 12px 25px;
+    padding: 5px 10px; 
+    font-size: 0.8em; 
+    height: 30px; 
+    width: auto; 
+    min-width: 100px; 
     background-color: #2b265e;
     color: white;
-    font-size: 1em;
     font-weight: bold;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s;
+    border-radius: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
+#btn-filtrar:hover, 
 #btn-adicionar-filme:hover {
     background-color: #ffc107;
     color: #2b265e;
     transform: scale(1.05);
+}
+
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 table {
@@ -219,42 +208,9 @@ th {
 }
 
 td.status-ativo {
-    color: #28a745; 
+    color: #28a745;
 }
 
 td.status-inativo {
-    color: #dc3545; 
-}
-
-button.editar {
-    padding: 8px 12px;
-    background-color: #2b265e;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 0.9em;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-button.editar:hover {
-    background-color: #ffc107;
-    color: #2b265e;
-    transform: scale(1.05);
-}
-
-button.remover {
-    padding: 8px 12px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 0.9em;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-button.remover:hover {
-    background-color: #c82333;
-    transform: scale(1.05);
+    color: #dc3545;
 }
