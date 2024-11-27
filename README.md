@@ -6,10 +6,11 @@
 
 
 ## 👨‍💻 Projeto desenvolvido por: 
-- Brenno Ostemberg de Oliveira
-- Júlia Campos Nery
-- Mylenna Peralta Farias
-- Victor Elais Costa Menezes
+- Brenno Ostemberg 
+- Júlia Campos 
+- Mylenna Farias
+- Victor Elias 
+- Vitória Cristina
 
 ### Índice
 
