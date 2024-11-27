@@ -11,9 +11,7 @@
 
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -29,26 +27,22 @@
                 </li>
                 <li>
                     <img src="https://cdn-icons-png.flaticon.com/512/33/33308.png" alt="Ícone Funcionários">
-                    <a href="#">Funcionários</a>
+                    <a href="employees">Funcionários</a>
                 </li>
                 <li>
-                    <img src="https://cdn.icon-icons.com/icons2/2518/PNG/512/adjustments_horizontal_icon_151643.png"
-                        alt="Ícone Painel de Controle">
-                    <a href="#">Painel de Controle</a>
+                    <img src="https://cdn.icon-icons.com/icons2/2518/PNG/512/adjustments_horizontal_icon_151643.png" alt="Ícone Painel de Controle">
+                    <a href="dashboard">Painel de Controle</a>
                 </li>
                 <li>
-                    <img src="https://icons.veryicon.com/png/o/education-technology/library-icon/system-log-2.png"
-                        alt="Ícone Logs">
-                    <a href="#">Logs</a>
+                    <img src="https://icons.veryicon.com/png/o/education-technology/library-icon/system-log-2.png" alt="Ícone Logs">
+                    <a href="logs">Logs</a>
                 </li>
             </ul>
         </nav>
 
         <main>
-
             <header>
                 <input type="text" placeholder="Pesquisar um ingresso" class="search-input">
-
                 <div class="user-info">
                     <img src="https://cdn-icons-png.flaticon.com/512/1182/1182718.png" alt="Ícone Notificação">
                     <img src="https://avatars.githubusercontent.com/u/134342470?v=4" alt="Perfil">
@@ -56,35 +50,33 @@
                 </div>
             </header>
 
-            <nav class="tabs">
+            <nav class="tabs" style="display: none;">
                 <button class="active">Filmes</button>
                 <button>Ingressos</button>
             </nav>
 
-            <section>
-                <h2>Filmes</h2>
-                <button id="btn-filtrar">Filtrar</button>
-                <form id="form-filtro" style="display: none;">
-                    <label for="filtroNome">Nome do Filme:</label>
-                    <input type="text" id="filtroNome" placeholder="Digite o nome do filme" />
-                
-                    <label for="filtroStatus">Status:</label>
-                    <select id="filtroStatus">
-                        <option value="">Todos</option>
-                        <option value="Ativo">Ativo</option>
-                        <option value="Inativo">Inativo</option>
-                    </select>
-                
-                    <label for="filtroAno">Ano de Lançamento:</label>
-                    <input type="number" id="filtroAno" placeholder="Ex.: 2022" />
-                
-                    <button type="submit">Filtrar</button>
-                </form>                
-
+            <section class="buttons-container">
                 <button id="btn-adicionar-filme" onclick="window.location.href='/adicionar-filme'">
                     Adicionar Filme
                 </button>
+                <button id="btn-filtrar">
+                    Filtrar
+                </button>
             </section>
+
+            <form id="form-filtro" style="display: none;">
+                <label for="filtroNome">Nome do Filme:</label>
+                <input type="text" id="filtroNome" placeholder="Digite o nome do filme">
+                <label for="filtroStatus">Status:</label>
+                <select id="filtroStatus">
+                    <option value="">Todos</option>
+                    <option value="Ativo">Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                </select>
+                <label for="filtroAno">Ano de Lançamento:</label>
+                <input type="number" id="filtroAno" placeholder="Ex.: 2022">
+                <button type="submit">Filtrar</button>
+            </form>
 
             <section>
                 <table>
@@ -98,15 +90,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td><img src="poster.jpg" alt="Poster"></td>
+                            <td>O Poderoso Chefão</td>
+                            <td>1972</td>
+                            <td class="status-ativo">Ativo</td>
+                            <td>
+                                <button class="btn-editar">Editar</button>
+                                <button class="btn-remover">Remover</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
-
+        </main>
     </div>
-    </main>
-
-    </div>
-
 </body>
 
 </html>
