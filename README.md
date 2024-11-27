@@ -4,7 +4,15 @@
 
 > Uma aplicação web para facilitar a compra de ingressos e gerenciar o catálogo de filmes.
 
+
+## 👨‍💻 Projeto desenvolvido por: 
+- Brenno Ostemberg de Oliveira
+- Júlia Campos Nery
+- Mylenna Peralta Farias
+- Victor Elais Costa Menezes
+
 ### Índice
+
 - 📝 [Descrição do Projeto](#descrição-do-projeto)
 - ⚙️ [Funcionalidades](#funcionalidades)
 - 🛠️ [Tecnologias Utilizadas](#tecnologias-utilizadas)
