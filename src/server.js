@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const mainController = require('./controllers/mainController'); 
+const mainController = require('./controllers/mainController');
 
 // Instância do Express
 const app = express();
@@ -12,16 +12,6 @@ app.use(express.json());
 
 // Servindo arquivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Configuração de Views para o HTML
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
-});
-
-// Servindo o arquivo editMovie.html
-app.get('/editMovie.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'editMovie.html'));
-});
 
 // Configuração de Rotas
 app.use('/', mainController);
