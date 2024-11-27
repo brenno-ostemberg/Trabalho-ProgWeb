@@ -9,6 +9,68 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../views', 'index.html'));
 });
 
+// Rota para a página de lista de filmes
+router.get('/moviesTodos', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views', 'moviesLista.html'));
+});
+
+// Rota para a página de edição de filmes
+router.get('/editMovie.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views', 'editMovie.html'));
+});
+
+// Rota para a página de atualizar preço do ingresso
+router.get('/atualizarPreco', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views', 'precoIngresso.html'));
+});
+
+// Rota Filtro
+router.get('/api/movies/filter', async (req, res) => {
+    try {
+        const { nomeFilme, status, anoLancamento } = req.query;
+
+        let query = 'SELECT * FROM Filmes WHERE 1=1';
+        const params = [];
+
+        if (nomeFilme) {
+            params.push(`%${nomeFilme}%`);
+            query += ` AND nome ILIKE $${params.length}`;
+        }
+
+        if (status) {
+            params.push(status === "Ativo");
+            query += ` AND status = $${params.length}`;
+        }
+
+        if (anoLancamento) {
+            params.push(anoLancamento);
+            query += ` AND ano_lancamento = $${params.length}`;
+        }
+
+        const result = await db.query(query, params);
+        res.json({ filmes: result.rows });
+
+    } catch (error) {
+        console.error('Erro ao filtrar filmes:', error);
+        res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+});
+
+
+// Rota para listar todos os filmes
+router.get('/api/moviesTodos', async (req, res) => {
+    try {
+        const query = 'SELECT * FROM Filmes ORDER BY id'; 
+        const result = await db.query(query);
+
+        res.json({ filmes: result.rows });
+    } catch (error) {
+        console.error('Erro ao listar filmes:', error);
+        res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+});
+
+// Rota para adicionar filme
 router.get('/adicionar-filme', (req, res) => {
     res.sendFile(path.join(__dirname, '../views', 'addMovie.html'));
 });
@@ -119,6 +181,65 @@ router.put('/api/movies/:id', async (req, res) => {
     } catch (error) {
         console.error('Erro ao editar filme:', error);
         res.status(500).json({ success: false, message: 'Erro interno do servidor.' });
+    }
+});
+
+// Rota para buscar o preço atual do ingresso
+router.get('/api/atualizarPreco', async (req, res) => {
+    try {
+        const query = 'SELECT preco_ingresso FROM Filmes LIMIT 1';
+        const result = await db.query(query);
+
+        if (result.rows.length > 0) {
+            res.json({ 
+                success: true, 
+                precoIngresso: result.rows[0].preco_ingresso 
+            });
+        } else {
+            res.status(404).json({ 
+                success: false, 
+                message: 'Preço do ingresso não encontrado' 
+            });
+        }
+    } catch (error) {
+        console.error('Erro ao buscar preço do ingresso:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Erro interno do servidor' 
+        });
+    }
+});
+
+// Rota para atualizar o preço do ingresso
+router.put('/api/atualizarPreco', async (req, res) => {
+    try {
+        const { novoPreco } = req.body;
+
+        // Validações simples de preço
+        if (isNaN(novoPreco) || novoPreco <= 0) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Preço inválido' 
+            });
+        }
+
+        const query = `
+            UPDATE Filmes 
+            SET preco_ingresso = $1
+        `;
+        const result = await db.query(query, [novoPreco]);
+
+        res.json({ 
+            success: true, 
+            message: 'Preço do ingresso atualizado com sucesso!',
+            novoPreco 
+        });
+    } catch (error) {
+        console.error('Erro ao atualizar preço do ingresso:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Erro interno do servidor' 
+        });
     }
 });
 
